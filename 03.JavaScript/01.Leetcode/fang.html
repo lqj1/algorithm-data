@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 3000px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function throttle(fn, delay) {
+        let canRun = true;
+        return function (e) {
+          if (!canRun) {
+            return;
+          }
+          canRun = false;
+          setTimeout(() => {
+            fn.apply(this, arguments);
+            canRun = true;
+          }, delay);
+        };
+      }
+      function sayHi(e) {
+        console.log('节流：', e.target.innerWidth, e.target.innerHeight);
+      }
+      window.addEventListener('resize', throttle(sayHi, 2000));
+    </script>
+  </body>
+</html>
