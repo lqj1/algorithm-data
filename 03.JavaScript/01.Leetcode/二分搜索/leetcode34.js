@@ -1,5 +1,5 @@
 /**
- * @description: 2022年1月18日13:45:58
+ * @description: 2022年1月24日00:15:05
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
@@ -20,6 +20,15 @@
 
 // 输入：nums = [], target = 0
 // 输出：[-1,-1]
+
+/**
+ * 分析： 利用到数组升序排列的条件，一般情况就使用二分查找
+ * 考虑 target 开始和结束位置，其实我们要找的就是
+ * 数组中「第一个等于 target 的位置」（记为leftIdx）
+ * 和「第一个大于 target 的位置减一」（记为 rightIdx）。
+ */
+// flat为true表示查到
+const binarySearch = (nums, target, flag) => {};
 
 var searchRange = function (nums, target) {
   let left = 0,

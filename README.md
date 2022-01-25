@@ -104,3 +104,5 @@ int right_bount(int[] nums, int target) {
   return right;
 }
 ```
+
+> 小结：一般情况，利用到数组升序排列的条件，就可以使用二分查找
