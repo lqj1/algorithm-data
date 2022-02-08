@@ -27,9 +27,11 @@
       telInput.addEventListener('input', debounce(demo, 2000));
       function debounce(fn, await) {
         let timer = null;
-        return args => {
+        return () => {
           if (timer) clearTimeout(timer);
-          timer = setTimeout(fn, await);
+          timer = setTimeout(() => {
+            fn.apply(this, arguments);
+          });
         };
       }
       function demo() {
@@ -44,14 +46,13 @@
       // });
       // 节流
       box.addEventListener('mouseover', throttle(event, 2000));
-      function throttle(event, await) {
-        let timer = null;
-        return function () {
-          if (!timer) {
-            timer = setTimeout(() => {
-              event();
-              timer = null;
-            }, await);
+      function throtte(func, time) {
+        let activeTime = 0;
+        return () => {
+          const current = Date.now();
+          if (current - activeTime > time) {
+            func.apply(this, arguments);
+            activeTime = Date.now();
           }
         };
       }
